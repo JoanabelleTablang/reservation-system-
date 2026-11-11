@@ -1,0 +1,116 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Campus Facility Reservation System</title>  
+    <link rel="stylesheet" href="style.css">  
+</head>  
+<body>  
+    <div class="app-container">  
+        <header>  
+            <h1>🏫 Campus Facility Reservation System</h1>  
+            <p>Efficiently book school spaces and avoid double-bookings.</p>  
+        </header>
+
+        <!-- Mobile Navigation Tabs View Control Toggle Header -->
+        <nav class="mobile-tabs">
+            <button class="tab-btn active" data-tab="formPanel">📋 Make Request</button>
+            <button class="tab-btn" data-tab="statusPanel">🏛️ View Status/Schedules</button>
+        </nav>
+
+        <main class="dashboard">  
+            <!-- Left Panel: Create Reservation -->  
+            <section id="formPanel" class="panel form-panel active">  
+                <h2>📋 Make a Reservation</h2>  
+                <form id="reservationForm">  
+                    <div class="form-group">  
+                        <label for="userName">Your Name</label>  
+                        <input type="text" id="userName" placeholder="Enter your full name" required>  
+                    </div>  
+
+                    <div class="form-group">  
+                        <label for="userRole">Role</label>  
+                        <select id="userRole" required>  
+                            <option value="Student">Student</option>  
+                            <option value="Staff">School Staff</option>  
+                        </select>  
+                    </div>  
+
+                    <div class="form-group">  
+                        <label for="facilitySelect">Select Facility</label>  
+                        <select id="facilitySelect" required>  
+                            <!-- Dynamically populated by OOP logic -->  
+                        </select>  
+                    </div>  
+
+                    <div class="form-group">  
+                        <label for="reservationDate">Reservation Date</label>  
+                        <input type="date" id="reservationDate" required>  
+                    </div>  
+
+                    <div class="form-group">  
+                        <label for="durationType">Select Booking Duration</label>  
+                        <select id="durationType" required>  
+                            <option value="Whole Day">Whole Day (08:00 AM - 05:00 PM)</option>  
+                            <option value="Half Day (AM)">Half Day Morning (08:00 AM - 12:00 PM)</option>  
+                            <option value="Half Day (PM)">Half Day Afternoon (01:00 PM - 05:00 PM)</option>  
+                            <option value="Custom Time Slot">Custom Time Slot...</option>  
+                        </select>  
+                    </div>  
+
+                    <!-- Custom Time Input Fields -->  
+                    <div id="customTimeFields" class="form-group" style="display: none; background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px dashed #cbd5e1;">  
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">  
+                            <div>  
+                                <label for="startTime" style="font-size: 0.8rem;">Start Time</label>  
+                                <input type="time" id="startTime">  
+                            </div>  
+                            <div>  
+                                <label for="endTime" style="font-size: 0.8rem;">End Time</label>  
+                                <input type="time" id="endTime">  
+                            </div>  
+                        </div>  
+                    </div>  
+
+                    <button type="submit" class="btn-primary">Confirm Reservation</button>  
+                </form>  
+            </section>  
+
+            <!-- Right Panel: Status & Management -->  
+            <section id="statusPanel" class="panel content-panel">  
+                <div class="section-block">  
+                    <div class="section-header-flex">  
+                        <h2>🏛️ Facility Status</h2>  
+                        <input type="text" id="searchFacility" placeholder="🔍 Filter facilities..." class="search-bar">  
+                    </div>  
+                    <div id="facilityGrid" class="grid-container">  
+                        <!-- Populated dynamically -->  
+                    </div>  
+                </div>  
+
+                <div class="section-block">  
+                    <h2>📅 Active Bookings</h2>  
+                    <div class="table-wrapper">  
+                        <table>  
+                            <thead>  
+                                <tr>  
+                                    <th>Facility</th>  
+                                    <th>Reserved By</th>  
+                                    <th>Role</th>  
+                                    <th>Date & Duration</th>  
+                                    <th>Action</th>  
+                                </tr>  
+                            </thead>  
+                            <tbody id="bookingsTableBody">  
+                                <!-- Populated dynamically -->  
+                            </tbody>  
+                        </table>  
+                    </div>  
+                </div>  
+            </section>  
+        </main>  
+    </div>  
+    <script src="app.js"></script>
+</body>  
+</html>
